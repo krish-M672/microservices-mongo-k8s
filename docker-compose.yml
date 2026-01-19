@@ -13,7 +13,7 @@ services:
     volumes:
       - mongo-inventory-data:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval","db.adminComand('ping')"]
+      test: ["CMD", "mongosh", "--eval","db.adminCommand('ping')"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -30,7 +30,7 @@ services:
     volumes:
       - mongo-orders-data:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminComand('ping')"]
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -42,7 +42,7 @@ services:
     ports:
       - "8082:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongo-inventory:27017/inventory
+      SPRING_DATA_MONGODB_URI: "mongodb://root:rootpassword@mongo-inventory:27017/inventory?authSource=admin"
     depends_on:
      mongo-inventory:
        condition: service_healthy
@@ -54,7 +54,7 @@ services:
     ports:
       - "8083:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://mongo-orders:27017/orders
+      SPRING_DATA_MONGODB_URI: "mongodb://root:rootpassword@mongo-orders:27017/orders?authSource=admin"
     depends_on:
      mongo-orders:
        condition: service_healthy

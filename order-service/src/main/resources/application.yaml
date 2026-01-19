@@ -1,12 +1,12 @@
 server:
-  port: 8083
+  port: 8080
 
 spring:
   application:
     name: order-service
   data:
     mongodb:
-      uri: mongodb://root:rootpassword@localhost:27019/ordersdb?authSource=admin
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27019/orders}
       auto-index-creation: true
 
 inventory:

@@ -1,17 +1,18 @@
 package com.example.orderservice.controller;
 
 
+import com.example.orderservice.api.CreateOrderRequest;
 import com.example.orderservice.model.Order;
 import com.example.orderservice.repo.OrderRepository;
 import com.example.orderservice.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/orders")
 public class OrderContoller {
 
     private final OrderService orderService;
@@ -23,9 +24,8 @@ public class OrderContoller {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(String sku, int qty){
-        Order order = orderService.createOrder(sku, qty);
-        return ResponseEntity.ok(order);
+    public ResponseEntity<Order> create(@Valid @RequestBody CreateOrderRequest req) {
+        return ResponseEntity.ok(orderService.createOrder(req.getSku(), req.getQuantity()));
     }
 
     @GetMapping
