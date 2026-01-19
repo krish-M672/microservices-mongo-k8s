@@ -1,0 +1,24 @@
+# Maven
+target
+.mvn
+mvnw
+mvnw.cmd
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+*.iml
+
+# OS
+.DS_Store
+
+# Documentation
+HELP.md
+
+# Dockerfile (avoid recursion)
+Dockerfile
+.dockerignore

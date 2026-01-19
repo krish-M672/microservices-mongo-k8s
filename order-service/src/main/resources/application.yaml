@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: order-service
+  data:
+    mongodb:
+      uri: mongodb://root:rootpassword@localhost:27019/ordersdb?authSource=admin
+      auto-index-creation: true
+
+inventory:
+  base-url: ${INVENTORY_BASE_URL:http://localhost:8082}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
