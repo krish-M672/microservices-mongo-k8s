@@ -24,6 +24,9 @@ services:
     container_name: mongo-orders
     ports:
       - "27019:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
     volumes:
       - mongo-orders-data:/data/db
     healthcheck:
