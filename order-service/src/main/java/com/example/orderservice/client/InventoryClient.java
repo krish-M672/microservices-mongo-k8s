@@ -23,7 +23,7 @@ public class InventoryClient {
                 .uri(uriBuilder -> uriBuilder
                         .path("/inventory/check")
                         .queryParam("sku",sku)
-                        .queryParam("qty", qty)
+                        .queryParam("quantity", qty)
                         .build())
                 .retrieve()
                 .bodyToMono(InventoryCheckResponse.class)

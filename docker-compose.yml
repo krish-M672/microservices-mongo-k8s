@@ -55,6 +55,7 @@ services:
       - "8083:8080"
     environment:
       SPRING_DATA_MONGODB_URI: "mongodb://root:rootpassword@mongo-orders:27017/orders?authSource=admin"
+      INVENTORY_BASE_URL: http://inventory-service:8080
     depends_on:
      mongo-orders:
        condition: service_healthy
@@ -67,8 +68,8 @@ services:
     ports:
       - "8084:8080"
     environment:
-      INVENTORY_URL: http://inventory-service:8080
-      ORDER_URL: http://order-service:8080
+      INVENTORY_URI: http://inventory-service:8080
+      ORDER_URI: http://order-service:8080
     depends_on:
       inventory-service:
         condition: service_started
