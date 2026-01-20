@@ -8,15 +8,15 @@ spring:
     gateway:
       routes:
         - id: inventory
-          uri: ${INVENTORY_URI:http://localhost:8082}
+          uri: ${INVENTORY_URL:http://localhost:8082}
           predicates:
             - Path=/inventory/**
         - id: orders
-          uri: ${ORDER_URI:http://localhost:8083}
+          uri: ${ORDER_URL:http://localhost:8083}
           predicates:
             - Path=/orders/**
 management:
   endpoints:
     web:
       exposure:
-        include: 'health,info'
+        include: 'health,info,gateway'

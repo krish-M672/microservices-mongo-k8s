@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: ms
+data:
+  INVENTORY_MONGO_URI: mongodb://mongo-inventory:27017/inventory
+  ORDERS_MONGO_URI: mongodb://mongo-orders:27017/orders
+  INVENTORY_BASE_URL: http://inventory-service:8080
+  INVENTORY_URL: http://inventory-service:8080
+  ORDER_URL: http://order-service:8080
